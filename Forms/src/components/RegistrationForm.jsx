@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const RegistrationForm = () => {
+  const [data, setData] = useState('');
   const [values, setValues] = useState({
     name: "",
     email: "",
     password: "",
+    login:"",
   });
+
+  const loginGit = values.login;
 
   const handleChange = (e) => {
     setValues({
@@ -18,12 +22,31 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     console.log("values:", values);
+
+    
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(`https://api.github.com/users/${loginGit}`)
+        .then((res) => res.json())
+        .then((res) => setData([res]))
+        .catch((e) => console.error(e));
+    };
+
+    const timer = setTimeout(() => {
+      fetchData();
+      console.log('data:', data);
+      console.log('loginGit:',loginGit);
+      console.log("dados inseridos com sucesso")
+    }, 60000);
+
+    return () => clearTimeout(timer);
+  }, [data, loginGit]);
+
 
   return (
     <div>
-      <h2>1.Formulário Básico</h2>
-
       <form onSubmit={handleSubmit}>
         <div>
           <p>nome:</p>
@@ -47,6 +70,16 @@ const RegistrationForm = () => {
             type="password"
             name="password"
             value={values.password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <p>github login:</p>
+          <input
+            type="login"
+            name="login"
+            value={values.login}
             onChange={handleChange}
           />
         </div>
