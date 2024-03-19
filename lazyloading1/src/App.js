@@ -9,6 +9,7 @@ import TemperatureCard from './components/TemperatureCard';
 const NYTemp = React.lazy(() => import ('./WeatherTag2'));
 const BerlinTemp = React.lazy(() => import ('./WeatherTag'));
 const SFTemp = React.lazy(() => import ('./WeatherTag3'));
+const SPTemp = React.lazy(() => import ('./WeatherTag4'));
 
 function App() {
 
@@ -23,17 +24,18 @@ function App() {
         }}  
       >
         <h2>
-          <span>How is the temperature today ?</span>
+          <span>How is the local temperature today ?</span>
         </h2>
         <React.Suspense fallback={<FontAwesomeIcon icon={solid('rotate')} spin/>}> 
           
           <BerlinTemp />
           <NYTemp/>
           <SFTemp/>
+          <SPTemp/>
           
 
         </React.Suspense>
-        <TemperatureCard city={'Berlim'}/>
+        {/* <TemperatureCard city={'Berlim'}/> */}
       </div>
   );
 }

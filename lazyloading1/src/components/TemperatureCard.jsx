@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import './TemperatureCard.css'
+import * as S from './styles';
 
 
 const TemperatureCard = ({city}) => {
@@ -36,18 +36,20 @@ const TemperatureCard = ({city}) => {
 
     useEffect(() => {
         getTempData(city);
-      }, [city]);
+      }, );
+
   return (
 
-    <div className='container'>
-        <div className='Title'><h2>TemperatureCard</h2></div>
-        <div className='TempCity'>
+    <S.Container>
+        <S.TopCard><h2>TemperatureCard</h2></S.TopCard>
+        <S.BottomCard>
             <h2>Temperatura em {city1}</h2>
             <p>'10'</p>
-            </div>
+            </S.BottomCard>
+    </S.Container>
         
 
-    </div>
+  
   )
 }
 

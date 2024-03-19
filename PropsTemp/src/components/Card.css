@@ -1,0 +1,23 @@
+.ContainerCard {
+    flex:1;
+    background-color: rgb(233, 233, 229);
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgb(108, 228, 228);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.ContainerCard p{
+    font-size: medium;
+    color:blue;
+    text-align: center;
+
+}
+
+.Temp p{
+    font-size: medium;
+    color:blue;
+    text-align: center;
+
+}
